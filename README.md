@@ -111,9 +111,10 @@ Below is an example showing how the system analyzes posture in a workplace setti
 *Annotated output showing detected keypoints and ergonomic assessment*
 
 In this example, the system detects several ergonomic issues:
-- Elbow angle 1.4° (below recommend range)
-- Knee angle of 2.5° (below recommended range)
-- Torso twist of 16.2° (exceeds threshold of 10°)
+- Back angle of 69.1° (above threshold of 20°)
+- Knee angle of 179.1° (above recommended range of (90°,120°))
+- Head angle of 90.2° (above threshold of 15°)
+- Elbow angle of 166.5 (above recommended range of (70°,110°))
 
 The annotated output displays these issues directly on the image, with green text for incorrect postures helping workers and supervisors identify and correct ergonomic problems in real-time.
 
