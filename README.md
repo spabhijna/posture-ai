@@ -61,7 +61,7 @@ Correct_Pose_Detection/
 │   └── visualizer.py     # Visualization tools
 ├── models/
 │   └── yolov8s-pose.pt   # YOLOv8 pose estimation model
-├── input/                # Input images and videos
+├── media/                # Input images and videos
 ├── output/               # Output annotated images and videos
 └── README.md             # Project documentation
 ```
@@ -97,19 +97,23 @@ python src/main.py input/example.mp4 --display --scale 2
 Below is an example showing how the system analyzes posture in a workplace setting:
 
 ### Input Image
-![Input Image](media/4887339.jpg)
+![Input Image]
+![4887339](https://github.com/user-attachments/assets/a4ff5a23-96a6-452f-abfa-2ba65e3ea090)
+
 *Worker performing a lifting task*
 
 ### Output Image
-![Output Image](output/4887339_annotated.jpg)
+![Output Image]
+![4887339_annotated](https://github.com/user-attachments/assets/6a71b013-8d5d-4d37-9f8d-f0ae459e052c)
+
 *Annotated output showing detected keypoints and ergonomic assessment*
 
 In this example, the system detects several ergonomic issues:
-- Back angle of 32.7° (exceeds threshold of 20°)
-- Knee angle of 85.3° (slightly below recommended range)
-- Hip twist of 12.4° (exceeds threshold of 10°)
+- Elbow angle 1.4° (below recommend range)
+- Knee angle of 2.5° (below recommended range)
+- Torso twist of 16.2° (exceeds threshold of 10°)
 
-The annotated output displays these issues directly on the image, with green text for correct postures and red text for incorrect ones, helping workers and supervisors identify and correct ergonomic problems in real-time.
+The annotated output displays these issues directly on the image, with green text for incorrect postures helping workers and supervisors identify and correct ergonomic problems in real-time.
 
 ## How It Works
 
@@ -132,10 +136,6 @@ The system checks the following ergonomic parameters:
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Acknowledgments
 
