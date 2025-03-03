@@ -97,13 +97,13 @@ python src/main.py input/example.mp4 --display --scale 2
 Below is an example showing how the system analyzes posture in a workplace setting:
 
 ### Input Image
-![Input Image]
+
 ![4887339](https://github.com/user-attachments/assets/a4ff5a23-96a6-452f-abfa-2ba65e3ea090)
 
 *Worker performing a lifting task*
 
 ### Output Image
-![Output Image]
+
 ![4887339_annotated](https://github.com/user-attachments/assets/6a71b013-8d5d-4d37-9f8d-f0ae459e052c)
 
 *Annotated output showing detected keypoints and ergonomic assessment*
