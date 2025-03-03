@@ -40,9 +40,13 @@ This project uses pose estimation technology to analyze body posture in images a
 
 2. Install dependencies:
    ```
-   pip install -r requirements.txt
+   pip install uv  # Install uv if not already installed
+   uv venv .venv  # Create a virtual environment
+   source .venv/bin/activate  # Activate the environment (Linux/macOS)
+   On Windows, use: .venv\Scripts\activate
+   uv install  # Install dependencies from pyproject.toml
+   
    ```
-
 3. Download the YOLOv8 pose model:
    ```
    mkdir -p models
@@ -59,10 +63,6 @@ Correct_Pose_Detection/
 │   ├── model.py          # Pose detection model wrapper
 │   ├── utils.py          # Utility functions
 │   └── visualizer.py     # Visualization tools
-├── models/
-│   └── yolov8s-pose.pt   # YOLOv8 pose estimation model
-├── media/                # Input images and videos
-├── output/               # Output annotated images and videos
 └── README.md             # Project documentation
 ```
 
@@ -98,13 +98,15 @@ Below is an example showing how the system analyzes posture in a workplace setti
 
 ### Input Image
 
-![4887339](https://github.com/user-attachments/assets/a4ff5a23-96a6-452f-abfa-2ba65e3ea090)
+![image](https://github.com/user-attachments/assets/d26618d7-89ef-45b6-b9d8-468f3c2fc401)
+
 
 *Worker performing a lifting task*
 
 ### Output Image
 
-![4887339_annotated](https://github.com/user-attachments/assets/6a71b013-8d5d-4d37-9f8d-f0ae459e052c)
+![image_annotated](https://github.com/user-attachments/assets/670f6f7b-304c-40c7-a5d7-80ee61208214)
+
 
 *Annotated output showing detected keypoints and ergonomic assessment*
 
