@@ -43,7 +43,7 @@ This project uses pose estimation technology to analyze body posture in images a
    pip install uv  # Install uv if not already installed
    uv venv .venv  # Create a virtual environment
    source .venv/bin/activate  # Activate the environment (Linux/macOS)
-   On Windows, use: .venv\Scripts\activate
+   # On Windows, use: .venv\Scripts\activate
    uv install  # Install dependencies from pyproject.toml
    
    ```
