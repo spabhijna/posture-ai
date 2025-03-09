@@ -1,0 +1,40 @@
+{
+    "rules": [
+        {
+            "name": "Back Straightness",
+            "type": "angle",
+            "keypoints": [0, 5, 11],
+            "threshold": {"min": 160}
+        },
+        {
+            "name": "Hip Angle",
+            "type": "angle",
+            "keypoints": [5, 11, 13],
+            "threshold": {"min": 90, "max": 120}
+        },
+        {
+            "name": "Knee Angle",
+            "type": "angle",
+            "keypoints": [11, 13, 15],
+            "threshold": {"min": 60, "max": 90}
+        },
+        {
+            "name": "Arm Straightness",
+            "type": "angle",
+            "keypoints": [5, 7, 9],
+            "threshold": {"min": 170}
+        },
+        {
+            "name": "Feet Spacing",
+            "type": "distance_ratio",
+            "pairs": [[15, 16], [5, 6]],
+            "threshold": {"min": 0.8, "max": 1.2}
+        },
+        {
+            "name": "Hip Twist",
+            "type": "angle_between_vectors",
+            "vectors": [[11, 12], [5, 6]],
+            "threshold": {"max": 10}
+        }
+    ]
+}

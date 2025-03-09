@@ -9,10 +9,10 @@ from check_pose import PoseChecker
 from visualizer import Visualizer
 from supervision import KeyPoints
 
-def main(input_path, display=False, scale=3):
+def main(input_path,congfig_path,display=False, scale=3):
     # Initialize components
     model = PoseModel("../models/yolov8s-pose.pt")
-    checker = PoseChecker()
+    checker = PoseChecker(congfig_path=congfig_path)
     visualizer = Visualizer()
 
     # Determine if input is an image or video
@@ -112,9 +112,10 @@ def main(input_path, display=False, scale=3):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Pose Correction Tool")
+    parser.add_argument('config', default='../config_files/deadlift.json', help='Path to the configuration file')
     parser.add_argument("input", help="Path to input image or video")
     parser.add_argument("--display", action="store_true", help="Display the result")
     parser.add_argument("--scale", type=int, default=3, help="Scale factor for display")
     args = parser.parse_args()
 
-    main(args.input, display=args.display, scale=args.scale)
+    main(args.input, display=args.display, scale=args.scale,congfig_path=args.config)

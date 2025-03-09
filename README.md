@@ -10,15 +10,9 @@ This project uses pose estimation technology to analyze body posture in images a
 
 - Real-time pose detection and analysis
 - Support for both image and video inputs
-- Comprehensive ergonomic assessment including:
-  - Back alignment
-  - Knee positioning
-  - Head tilt
-  - Arm positioning
-  - Feet spacing
-  - Hip/torso twist
-- Visual feedback with annotated outputs
-- Customizable thresholds for different ergonomic parameters
+- Apply customizable rules to check pose correctness
+- Save annotated output as images or videos
+- Visual feedback with annotations showing pose issues
 
 ## Installation
 
@@ -29,6 +23,7 @@ This project uses pose estimation technology to analyze body posture in images a
 - NumPy
 - PyTorch
 - Ultralytics YOLOv8
+- Supervision
 
 ### Setup
 
@@ -63,6 +58,10 @@ Correct_Pose_Detection/
 │   ├── model.py          # Pose detection model wrapper
 │   ├── utils.py          # Utility functions
 │   └── visualizer.py     # Visualization tools
+├── config/
+│   ├── deadlift.json     # Configuration file for deadlift pose analysis
+│   └── [other_poses].json # Configuration files for other poses
+├
 └── README.md             # Project documentation
 ```
 
@@ -73,7 +72,7 @@ Correct_Pose_Detection/
 Process an image or video file:
 
 ```
-python src/main.py input/example.jpg
+python src/main.py path/to/your/input/img/video
 ```
 
 ### Display Results
@@ -81,7 +80,7 @@ python src/main.py input/example.jpg
 To display the processed results:
 
 ```
-python src/main.py input/example.mp4 --display
+python src/main.py path/to/your/input/file --display
 ```
 
 ### Adjust Display Scale
@@ -89,8 +88,92 @@ python src/main.py input/example.mp4 --display
 For better visibility on high-resolution screens:
 
 ```
-python src/main.py input/example.mp4 --display --scale 2
+python src/main.py path/to/your/input/file --display --scale 2
 ```
+
+### Using Custom Configuration Files
+
+Specify a custom configuration file for pose analysis:
+
+```
+python src/main.py path/to/your/congfig_file path/to/your/input/file --display
+```
+
+## Configuration File Format
+
+The system uses JSON configuration files to define rules for pose analysis. Here's the structure and supported rule types:
+
+```json
+{
+  "rules": [
+    {
+      "type": "angle",
+      "name": "Back Angle",
+      "keypoints": ["hip", "shoulder", "Vertical"],
+      "threshold": {
+        "max": 20
+      }
+    },
+    {
+      "type": "distance",
+      "name": "Foot Spacing",
+      "keypoints": ["left_ankle", "right_ankle"],
+      "threshold": {
+        "min": 50,
+        "max": 90
+      }
+    },
+    {
+      "type": "distance_ratio",
+      "name": "Foot vs Shoulder Width",
+      "pairs": [
+        ["left_ankle", "right_ankle"],
+        ["left_shoulder", "right_shoulder"]
+      ],
+      "threshold": {
+        "min": 0.6,
+        "max": 1.2
+      }
+    },
+    {
+      "type": "angle_between_vectors",
+      "name": "Hip Twist",
+      "vectors": [
+        ["left_hip", "right_hip"],
+        ["left_shoulder", "right_shoulder"]
+      ],
+      "threshold": {
+        "max": 10
+      }
+    }
+  ]
+}
+```
+
+### Rule Types
+
+1. **angle**: Measures the angle between three keypoints
+   - Specify three keypoints in order (use "Vertical" for a vertical reference)
+   - Example: `["hip", "shoulder", "Vertical"]` measures the angle between hip-shoulder and a vertical line
+
+2. **distance**: Measures the distance between two keypoints
+   - Specify two keypoints
+   - Example: `["left_ankle", "right_ankle"]` measures the distance between ankles
+
+3. **distance_ratio**: Compares the ratio between two distances
+   - Specify two pairs of keypoints
+   - Example: Ratio of ankle width to shoulder width
+
+4. **angle_between_vectors**: Measures the angle between two vectors
+   - Specify two vectors, each defined by two keypoints
+   - Example: Angle between hip alignment and shoulder alignment
+
+### Thresholds
+
+Thresholds can be specified using:
+- **min**: Minimum acceptable value
+- **max**: Maximum acceptable value
+- Both min and max for a range
 
 ## Example Input and Output
 
@@ -121,20 +204,9 @@ The annotated output displays these issues directly on the image, with green tex
 ## How It Works
 
 1. **Pose Detection**: Uses YOLOv8 to detect human body keypoints in images or video frames
-2. **Ergonomic Analysis**: Analyzes the detected keypoints to check for ergonomic issues
+2. **Ergonomic Analysis**: Analyzes the detected keypoints according to rules defined in the configuration file
 3. **Visualization**: Annotates the input media with visual feedback and ergonomic assessments
 4. **Output**: Saves the annotated results and optionally displays them in real-time
-
-## Ergonomic Rules
-
-The system checks the following ergonomic parameters:
-
-- **Back Angle**: Measures the forward bend of the back (threshold: 20°)
-- **Knee Angle**: Checks knee flexion (threshold: 90°-120°)
-- **Head Angle**: Evaluates head/neck tilt (threshold: 15°)
-- **Elbow Angle**: Verifies proper arm positioning (threshold: 70°-110°)
-- **Feet Spacing**: Checks stance width relative to shoulders (threshold: 0.6-1.2× shoulder width)
-- **Hip Twist**: Measures rotation of torso relative to hips (threshold: 10°)
 
 ## Contributing
 
