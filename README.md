@@ -18,22 +18,22 @@ This project uses pose estimation technology to analyze body posture in images a
 ### Setup
 
 1. Clone the repository:
-   ```
+   ```bash
    git clone https://github.com/spabhijna/Correct_Pose_Detection.git
    cd Correct_Pose_Detection
    ```
 
 2. Install dependencies:
-   ```
+   ```bash
    pip install uv
-   uv venv .venv
+   uv venv --python=python3.11
    source .venv/bin/activate
-   uv install
-   
+   uv add
    ```
+
 3. Download the YOLOv8 pose model:
    Download YOLOv8s-pose.pt to the models directory
-   ```
+   ```bash
    mkdir -p models
    ```
 
@@ -65,7 +65,7 @@ python src/main.py path/to/your/input/img/video
 
 To display the processed results:
 
-```
+```bash
 python src/main.py path/to/your/input/file --display
 ```
 
@@ -73,7 +73,7 @@ python src/main.py path/to/your/input/file --display
 
 For better visibility on high-resolution screens:
 
-```
+```bash
 python src/main.py path/to/your/input/file --display --scale 2
 ```
 
@@ -81,7 +81,7 @@ python src/main.py path/to/your/input/file --display --scale 2
 
 Specify a custom configuration file for pose analysis:
 
-```
+```bash
 python src/main.py path/to/your/congfig_file path/to/your/input/file --display
 ```
 
