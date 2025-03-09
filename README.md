@@ -18,12 +18,15 @@ This project uses pose estimation technology to analyze body posture in images a
 
 ### Prerequisites
 
-- Python 3.8+
-- OpenCV
-- NumPy
-- PyTorch
-- Ultralytics YOLOv8
-- Supervision
+    requires-python >=3.11
+
+    numpy<2.0
+    opencv-python>=4.11.0.86
+    supervision<0.25.0
+    torch==2.0.1
+    torchaudio==2.0.2
+    torchvision==0.15.2
+    ultralytics>=8.3.82
 
 ### Setup
 
@@ -58,10 +61,7 @@ Correct_Pose_Detection/
 │   ├── model.py          # Pose detection model wrapper
 │   ├── utils.py          # Utility functions
 │   └── visualizer.py     # Visualization tools
-├── config/
-│   ├── deadlift.json     # Configuration file for deadlift pose analysis
-│   └── [other_poses].json # Configuration files for other poses
-├
+└── pyproject.toml        # Project details with dependencies
 └── README.md             # Project documentation
 ```
 
