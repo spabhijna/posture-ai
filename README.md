@@ -15,19 +15,6 @@ This project uses pose estimation technology to analyze body posture in images a
 - Visual feedback with annotations showing pose issues
 
 ## Installation
-
-### Prerequisites
-
-    requires-python >=3.11
-
-    numpy<2.0
-    opencv-python>=4.11.0.86
-    supervision<0.25.0
-    torch==2.0.1
-    torchaudio==2.0.2
-    torchvision==0.15.2
-    ultralytics>=8.3.82
-
 ### Setup
 
 1. Clone the repository:
@@ -38,17 +25,16 @@ This project uses pose estimation technology to analyze body posture in images a
 
 2. Install dependencies:
    ```
-   pip install uv  # Install uv if not already installed
-   uv venv .venv  # Create a virtual environment
-   source .venv/bin/activate  # Activate the environment (Linux/macOS)
-   # On Windows, use: .venv\Scripts\activate
-   uv install  # Install dependencies from pyproject.toml
+   pip install uv
+   uv venv .venv
+   source .venv/bin/activate
+   uv install
    
    ```
 3. Download the YOLOv8 pose model:
+   Download YOLOv8s-pose.pt to the models directory
    ```
    mkdir -p models
-   # Download YOLOv8s-pose.pt to the models directory
    ```
 
 ## Project Structure
@@ -179,25 +165,18 @@ Thresholds can be specified using:
 
 Below is an example showing how the system analyzes posture in a workplace setting:
 
-### Input Image
+### Incorrect Pose
 
-![image](https://github.com/user-attachments/assets/d26618d7-89ef-45b6-b9d8-468f3c2fc401)
+![image](img/incorrect_deadlift_annotated.jpg)
 
 
-*Worker performing a lifting task*
+### Correct Pose
 
-### Output Image
-
-![image_annotated](https://github.com/user-attachments/assets/670f6f7b-304c-40c7-a5d7-80ee61208214)
+![image_annotated](img/correct_deadlift_annotated.jpg)
 
 
 *Annotated output showing detected keypoints and ergonomic assessment*
 
-In this example, the system detects several ergonomic issues:
-- Back angle of 69.1° (above threshold of 20°)
-- Knee angle of 179.1° (above recommended range of (90°,120°))
-- Head angle of 90.2° (above threshold of 15°)
-- Elbow angle of 166.5 (above recommended range of (70°,110°))
 
 The annotated output displays these issues directly on the image, with green text for incorrect postures helping workers and supervisors identify and correct ergonomic problems in real-time.
 
