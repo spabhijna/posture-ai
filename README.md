@@ -28,7 +28,7 @@ This project uses pose estimation technology to analyze body posture in images a
    pip install uv
    uv venv --python=python3.11
    source .venv/bin/activate
-   uv add
+   uv sync
    ```
 
 3. Download the YOLOv8 pose model:
