@@ -1,4 +1,4 @@
-# Correct Pose Detection
+# posture-ai
 
 A computer vision tool to detect and analyze human posture for workplace safety and ergonomics assessment.
 
@@ -19,8 +19,8 @@ This project uses pose estimation technology to analyze body posture in images a
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/spabhijna/Correct_Pose_Detection.git
-   cd Correct_Pose_Detection
+   git clone https://github.com/spabhijna/posture-ai.git
+   cd posture-ai
    ```
 
 2. Install dependencies:
@@ -40,7 +40,7 @@ This project uses pose estimation technology to analyze body posture in images a
 ## Project Structure
 
 ```
-Correct_Pose_Detection/
+posture-ai/
 ├── src/
 │   ├── check_pose.py     # Pose analysis algorithms
 │   ├── main.py           # Main application entry point
