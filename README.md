@@ -82,7 +82,7 @@ python src/main.py path/to/your/input/file --display --scale 2
 Specify a custom configuration file for pose analysis:
 
 ```bash
-python src/main.py path/to/your/congfig_file path/to/your/input/file --display
+python src/main.py --config path/to/your/congfig_file path/to/your/input/file --display
 ```
 
 ## Configuration File Format

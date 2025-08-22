@@ -26,7 +26,7 @@ def main(input_path, congfig_path, display=False, scale=3):
         return
 
     # Generate output path
-    output_dir = "../output"
+    output_dir = "output"
     os.makedirs(output_dir, exist_ok=True)
     base_name = os.path.basename(input_path)
     if is_image:
@@ -118,8 +118,8 @@ def main(input_path, congfig_path, display=False, scale=3):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Pose Correction Tool")
     parser.add_argument(
-        "config",
-        default="../config_files/deadlift.json",
+        "--config",
+        default="config_files/deadlift.json",
         help="Path to the configuration file",
     )
     parser.add_argument("input", help="Path to input image or video")
