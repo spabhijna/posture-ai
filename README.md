@@ -19,7 +19,7 @@ This project uses pose estimation technology to analyze body posture in images a
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/spabhijna/posture-ai.git
+   git clone git@github.com:spabhijna/posture-ai.git
    cd posture-ai
    ```
 
